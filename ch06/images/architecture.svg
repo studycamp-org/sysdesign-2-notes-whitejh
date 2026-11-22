@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792 430" width="792" height="430" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#656d76"/>
+    </marker>
+    <marker id="o" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#9a6700"/>
+    </marker>
+    <marker id="p" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#8250df"/>
+    </marker>
+  </defs>
+  <rect width="792" height="430" fill="#ffffff"/>
+
+  <text x="16" y="28" font-size="15" font-weight="700" fill="#1f2328">전체 구조 — 광고 클릭 이벤트 집계</text>
+  <text x="16" y="48" font-size="11" fill="#656d76">실선 = 실시간 집계 경로 · 점선 = 재처리(백필) · 보라 점선 = 하루 1회 대사(reconciliation)</text>
+
+  <!-- ===== 메인 경로 ===== -->
+  <!-- 1. 광고 클릭 -->
+  <rect x="16" y="150" width="100" height="56" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="66" y="175" font-size="12" font-weight="600" fill="#1f2328" text-anchor="middle">광고 클릭</text>
+  <text x="66" y="191" font-size="10" fill="#656d76" text-anchor="middle">최대 50K QPS</text>
+
+  <!-- 2. Kafka #1 -->
+  <rect x="148" y="150" width="100" height="56" rx="4" fill="#0969da" fill-opacity="0.10" stroke="#0969da"/>
+  <text x="198" y="175" font-size="12" font-weight="600" fill="#0969da" text-anchor="middle">Kafka #1</text>
+  <text x="198" y="191" font-size="10" fill="#656d76" text-anchor="middle">원시 이벤트</text>
+
+  <!-- 3. 집계 서비스 -->
+  <rect x="280" y="118" width="100" height="124" rx="4" fill="#1a7f37" fill-opacity="0.06" stroke="#1a7f37"/>
+  <text x="330" y="137" font-size="12" font-weight="700" fill="#1a7f37" text-anchor="middle">집계 서비스</text>
+  <rect x="289" y="148" width="82" height="26" rx="3" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="330" y="166" font-size="10" fill="#1a7f37" text-anchor="middle">맵 노드</text>
+  <rect x="289" y="178" width="82" height="26" rx="3" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="330" y="196" font-size="10" fill="#1a7f37" text-anchor="middle">집계 노드</text>
+  <rect x="289" y="208" width="82" height="26" rx="3" fill="#ffffff" stroke="#1a7f37"/>
+  <text x="330" y="226" font-size="10" fill="#1a7f37" text-anchor="middle">리듀스 노드</text>
+
+  <!-- 4. Kafka #2 -->
+  <rect x="412" y="150" width="100" height="56" rx="4" fill="#0969da" fill-opacity="0.10" stroke="#0969da"/>
+  <text x="462" y="175" font-size="12" font-weight="600" fill="#0969da" text-anchor="middle">Kafka #2</text>
+  <text x="462" y="191" font-size="10" fill="#656d76" text-anchor="middle">집계 결과</text>
+
+  <!-- 5. 집계 DB -->
+  <rect x="544" y="150" width="100" height="56" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="594" y="175" font-size="12" font-weight="600" fill="#1f2328" text-anchor="middle">집계 DB</text>
+  <text x="594" y="191" font-size="10" fill="#656d76" text-anchor="middle">Cassandra</text>
+
+  <!-- 6. 쿼리 서비스 -->
+  <rect x="676" y="150" width="100" height="56" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="726" y="182" font-size="12" font-weight="600" fill="#1f2328" text-anchor="middle">쿼리 서비스</text>
+
+  <!-- 대시보드 -->
+  <rect x="676" y="262" width="100" height="56" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="726" y="287" font-size="12" font-weight="600" fill="#1f2328" text-anchor="middle">대시보드</text>
+  <text x="726" y="303" font-size="10" fill="#656d76" text-anchor="middle">광고주 · 분석가</text>
+
+  <!-- 메인 화살표 -->
+  <line x1="116" y1="178" x2="277" y2="178" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="380" y1="178" x2="409" y2="178" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="512" y1="178" x2="541" y2="178" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="644" y1="178" x2="673" y2="178" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="726" y1="206" x2="726" y2="259" stroke="#656d76" marker-end="url(#a)"/>
+
+  <!-- 큐 #2 설명 -->
+  <text x="462" y="134" font-size="10" fill="#0969da" text-anchor="middle">원자적 커밋</text>
+  <text x="462" y="122" font-size="10" fill="#0969da" text-anchor="middle">정확히 한 번</text>
+
+  <!-- ===== 원시 데이터 / 재처리 ===== -->
+  <rect x="148" y="268" width="100" height="56" rx="4" fill="#bf8700" fill-opacity="0.12" stroke="#9a6700"/>
+  <text x="198" y="291" font-size="11" font-weight="600" fill="#9a6700" text-anchor="middle">원시 데이터</text>
+  <text x="198" y="307" font-size="10" fill="#9a6700" text-anchor="middle">콜드 스토리지</text>
+  <line x1="198" y1="206" x2="198" y2="265" stroke="#656d76" marker-end="url(#a)"/>
+
+  <rect x="280" y="268" width="100" height="56" rx="4" fill="#bf8700" fill-opacity="0.12" stroke="#9a6700"/>
+  <text x="330" y="291" font-size="11" font-weight="600" fill="#9a6700" text-anchor="middle">재계산 서비스</text>
+  <text x="330" y="307" font-size="10" fill="#9a6700" text-anchor="middle">전용 · 배치</text>
+
+  <path d="M248,296 L277,296" fill="none" stroke="#9a6700" stroke-dasharray="4 3" marker-end="url(#o)"/>
+  <path d="M380,296 L462,296 L462,209" fill="none" stroke="#9a6700" stroke-dasharray="4 3" marker-end="url(#o)"/>
+  <text x="392" y="340" font-size="10" fill="#9a6700">집계 버그 시 원시 데이터에서 다시 계산 → 실시간 경로와 분리</text>
+
+  <!-- ===== 대사 ===== -->
+  <rect x="544" y="358" width="130" height="50" rx="4" fill="#8250df" fill-opacity="0.10" stroke="#8250df"/>
+  <text x="609" y="379" font-size="11" font-weight="600" fill="#8250df" text-anchor="middle">대사 배치</text>
+  <text x="609" y="395" font-size="10" fill="#8250df" text-anchor="middle">하루 1회 대조</text>
+
+  <path d="M198,324 L198,383 L541,383" fill="none" stroke="#8250df" stroke-dasharray="4 3" marker-end="url(#p)"/>
+  <path d="M608,206 L608,355" fill="none" stroke="#8250df" stroke-dasharray="4 3" marker-end="url(#p)"/>
+  <text x="690" y="383" font-size="10" fill="#8250df">불일치 탐지</text>
+
+  <text x="16" y="422" font-size="11" fill="#656d76">큐로 생산자·소비자를 분리해 부분 장애를 흡수하고, 세 구성 요소(큐 · 집계 서비스 · DB)를 독립적으로 확장한다.</text>
+</svg>

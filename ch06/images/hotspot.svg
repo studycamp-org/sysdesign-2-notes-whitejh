@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 340" width="700" height="340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#656d76"/>
+    </marker>
+    <marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#cf222e"/>
+    </marker>
+    <marker id="o" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#9a6700"/>
+    </marker>
+  </defs>
+  <rect width="700" height="340" fill="#ffffff"/>
+
+  <!-- ===== 문제 ===== -->
+  <text x="20" y="26" font-size="14" font-weight="700" fill="#cf222e">① 핫스팟 — 인기 광고 하나에 트래픽이 몰린다</text>
+
+  <rect x="30" y="52" width="100" height="48" rx="4" fill="#0969da" fill-opacity="0.08" stroke="#0969da"/>
+  <text x="80" y="81" font-size="11" fill="#0969da" text-anchor="middle">맵 노드</text>
+
+  <line x1="130" y1="76" x2="255" y2="76" stroke="#cf222e" stroke-width="2" marker-end="url(#r)"/>
+  <text x="192" y="68" font-size="11" font-weight="600" fill="#cf222e" text-anchor="middle">ad001 · 300건</text>
+
+  <rect x="258" y="50" width="140" height="52" rx="4" fill="#cf222e" fill-opacity="0.10" stroke="#cf222e"/>
+  <text x="328" y="72" font-size="12" font-weight="600" fill="#cf222e" text-anchor="middle">집계 노드</text>
+  <text x="328" y="90" font-size="10" fill="#cf222e" text-anchor="middle">혼자 다 처리 → 과부하</text>
+
+  <text x="420" y="72" font-size="11" fill="#656d76">다른 집계 노드는 한가한데</text>
+  <text x="420" y="89" font-size="11" fill="#656d76">이 노드만 지연·장애 위험</text>
+
+  <line x1="20" y1="128" x2="680" y2="128" stroke="#d0d7de"/>
+
+  <!-- ===== 해결 ===== -->
+  <text x="20" y="156" font-size="14" font-weight="700" fill="#1a7f37">② 해결 — 리소스 관리자가 추가 노드를 할당하고 결과를 병합</text>
+
+  <!-- 리소스 관리자 -->
+  <rect x="195" y="176" width="150" height="32" rx="4" fill="#bf8700" fill-opacity="0.12" stroke="#9a6700"/>
+  <text x="270" y="197" font-size="11" fill="#9a6700" text-anchor="middle">리소스 관리자</text>
+  <path d="M270,208 L270,222" fill="none" stroke="#9a6700" stroke-dasharray="3 3" marker-end="url(#o)"/>
+  <text x="355" y="197" font-size="10" fill="#9a6700">추가 리소스 할당 요청</text>
+
+  <!-- 원래 노드 -->
+  <rect x="25" y="248" width="105" height="52" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="77" y="270" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">원래 집계 노드</text>
+  <text x="77" y="287" font-size="10" fill="#656d76" text-anchor="middle">300건을 3분할</text>
+
+  <!-- 분할 노드 -->
+  <rect x="195" y="228" width="150" height="30" rx="4" fill="#1a7f37" fill-opacity="0.08" stroke="#1a7f37"/>
+  <text x="270" y="248" font-size="11" fill="#1a7f37" text-anchor="middle">집계 노드 A · 100건</text>
+  <rect x="195" y="264" width="150" height="30" rx="4" fill="#1a7f37" fill-opacity="0.08" stroke="#1a7f37"/>
+  <text x="270" y="284" font-size="11" fill="#1a7f37" text-anchor="middle">집계 노드 B · 100건</text>
+  <rect x="195" y="300" width="150" height="30" rx="4" fill="#1a7f37" fill-opacity="0.08" stroke="#1a7f37"/>
+  <text x="270" y="320" font-size="11" fill="#1a7f37" text-anchor="middle">집계 노드 C · 100건</text>
+
+  <line x1="130" y1="268" x2="192" y2="243" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="130" y1="274" x2="192" y2="279" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="130" y1="280" x2="192" y2="315" stroke="#656d76" marker-end="url(#a)"/>
+
+  <!-- 병합 -->
+  <rect x="420" y="248" width="130" height="52" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="485" y="270" font-size="11" font-weight="600" fill="#1f2328" text-anchor="middle">결과 병합</text>
+  <text x="485" y="287" font-size="10" fill="#656d76" text-anchor="middle">원 노드에 다시 기록</text>
+
+  <line x1="345" y1="243" x2="417" y2="266" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="345" y1="279" x2="417" y2="274" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="345" y1="315" x2="417" y2="284" stroke="#656d76" marker-end="url(#a)"/>
+
+  <text x="575" y="266" font-size="10" fill="#656d76">더 정교한 대안</text>
+  <text x="575" y="282" font-size="10" fill="#656d76">전역-로컬 집계</text>
+  <text x="575" y="296" font-size="10" fill="#656d76">고유 집계 분할</text>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" width="700" height="360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif">
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#656d76"/>
+    </marker>
+    <marker id="g" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#1a7f37"/>
+    </marker>
+  </defs>
+  <rect width="700" height="360" fill="#ffffff"/>
+
+  <!-- ===== 람다 ===== -->
+  <text x="20" y="26" font-size="14" font-weight="700" fill="#1f2328">람다(Lambda) — 배치 경로 + 스트림 경로</text>
+
+  <rect x="20" y="78" width="80" height="40" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="60" y="103" font-size="11" fill="#1f2328" text-anchor="middle">클릭 소스</text>
+
+  <rect x="135" y="44" width="105" height="34" rx="4" fill="#bf8700" fill-opacity="0.12" stroke="#9a6700"/>
+  <text x="187" y="66" font-size="11" fill="#9a6700" text-anchor="middle">원시 저장소</text>
+  <rect x="270" y="44" width="105" height="34" rx="4" fill="#bf8700" fill-opacity="0.12" stroke="#9a6700"/>
+  <text x="322" y="66" font-size="11" fill="#9a6700" text-anchor="middle">배치 처리</text>
+
+  <rect x="135" y="118" width="105" height="34" rx="4" fill="#0969da" fill-opacity="0.10" stroke="#0969da"/>
+  <text x="187" y="140" font-size="11" fill="#0969da" text-anchor="middle">메시지 큐</text>
+  <rect x="270" y="118" width="105" height="34" rx="4" fill="#0969da" fill-opacity="0.10" stroke="#0969da"/>
+  <text x="322" y="140" font-size="11" fill="#0969da" text-anchor="middle">스트림 처리</text>
+
+  <rect x="410" y="78" width="100" height="40" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="460" y="96" font-size="11" fill="#1f2328" text-anchor="middle">집계 DB</text>
+  <text x="460" y="110" font-size="10" fill="#656d76" text-anchor="middle">서빙</text>
+
+  <line x1="100" y1="92"  x2="132" y2="64"  stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="100" y1="104" x2="132" y2="132" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="240" y1="61"  x2="267" y2="61"  stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="240" y1="135" x2="267" y2="135" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="375" y1="61"  x2="407" y2="90"  stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="375" y1="135" x2="407" y2="108" stroke="#656d76" marker-end="url(#a)"/>
+
+  <text x="530" y="88" font-size="11" font-weight="600" fill="#cf222e">단점</text>
+  <text x="530" y="105" font-size="10" fill="#cf222e">경로가 둘이라 코드베이스</text>
+  <text x="530" y="119" font-size="10" fill="#cf222e">2개를 따로 유지해야 함</text>
+
+  <line x1="20" y1="180" x2="680" y2="180" stroke="#d0d7de"/>
+
+  <!-- ===== 카파 ===== -->
+  <text x="20" y="208" font-size="14" font-weight="700" fill="#1a7f37">카파(Kappa) — 단일 스트림 경로 · 이 설계가 채택</text>
+
+  <rect x="20" y="248" width="80" height="40" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="60" y="273" font-size="11" fill="#1f2328" text-anchor="middle">클릭 소스</text>
+
+  <rect x="135" y="251" width="105" height="34" rx="4" fill="#0969da" fill-opacity="0.10" stroke="#0969da"/>
+  <text x="187" y="273" font-size="11" fill="#0969da" text-anchor="middle">메시지 큐</text>
+  <rect x="270" y="251" width="105" height="34" rx="4" fill="#0969da" fill-opacity="0.10" stroke="#0969da"/>
+  <text x="322" y="273" font-size="11" fill="#0969da" text-anchor="middle">스트림 처리</text>
+  <rect x="410" y="248" width="100" height="40" rx="4" fill="#f6f8fa" stroke="#656d76"/>
+  <text x="460" y="273" font-size="11" fill="#1f2328" text-anchor="middle">집계 DB</text>
+
+  <line x1="100" y1="268" x2="132" y2="268" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="240" y1="268" x2="267" y2="268" stroke="#656d76" marker-end="url(#a)"/>
+  <line x1="375" y1="268" x2="407" y2="268" stroke="#656d76" marker-end="url(#a)"/>
+
+  <!-- 재처리 경로 -->
+  <rect x="135" y="315" width="105" height="30" rx="4" fill="#bf8700" fill-opacity="0.12" stroke="#9a6700"/>
+  <text x="187" y="335" font-size="11" fill="#9a6700" text-anchor="middle">원시 저장소</text>
+  <path d="M240,330 L300,330 L300,290" fill="none" stroke="#1a7f37" stroke-dasharray="4 3" marker-end="url(#g)"/>
+  <text x="315" y="334" font-size="10" fill="#1a7f37">재처리(백필)도 같은 집계 경로를 통과</text>
+
+  <text x="530" y="258" font-size="11" font-weight="600" fill="#1a7f37">장점</text>
+  <text x="530" y="275" font-size="10" fill="#1a7f37">처리 엔진 하나만</text>
+  <text x="530" y="289" font-size="10" fill="#1a7f37">유지하면 됨</text>
+</svg>
